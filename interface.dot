@@ -1,0 +1,18 @@
+digraph interfaceSm {
+  rankdir=LR;
+  node[shape=circle]
+  unknown
+  adminDown
+  adminUp
+  configured
+  //{rank=same; adminUp; adminDown}
+  unknown -> adminUp [label="adminStatus=UP" color="red" fontcolor="red"]
+  unknown -> adminDown [label="adminStatus=DOWN" color="red" fontcolor="red"]
+  adminDown -> adminDown [label="prefix | prefix-len" color="blue" fontcolor="blue"]
+  adminDown -> adminUp [label="adminStatus=UP" color="red" fontcolor="red"]
+  adminUp -> adminUp [label="prefix | prefix-len(!configComplete)" color="blue" fontcolor="blue"]
+  adminUp -> adminDown [label="adminStatus=DOWN" color="red" fontcolor="red"]
+  adminUp -> configured [label="prefix | prefix-len(configComplete)" color="blue" fontcolor="blue"] 
+  adminUp -> configured [label="timer"]
+  configured -> adminDown [label="adminStatus=DOWN" color="blue" fontcolor="blue"]
+}
