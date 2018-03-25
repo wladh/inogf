@@ -82,6 +82,7 @@ the event.
 	  with the IP database. If there's no current configuration or reconciliation failed,
 	  it will assign a new IP and configure the interface.
 
+See the [state machine diagram](interface.png?raw=true)
 
 ## Exercises for the reader
 * Can you spot and correct a missing transition in response to an event? (Hint: you'll need another state to avoid config churn)
